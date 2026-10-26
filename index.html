@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SURAJPROCREATER| Premium Creative Portfolio</title>
+<title>Suraj | Premium Creative Portfolio</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Unbounded:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Unbounded:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --primary:#6C5CE7; --primary-light:#A29BFE; --secondary:#FD79A8;
@@ -131,6 +131,7 @@ header.scrolled{box-shadow:0 4px 25px rgba(0,0,0,.6)}
 .service-card h3{font-size:1.3rem;margin-bottom:.8rem}
 .service-card p{color:var(--gray-light);line-height:1.7;font-size:.95rem}
 
+/* ========== FAMILY ========== */
 .family-tabs{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
 .fam-tab{padding:.7rem 1.6rem;border-radius:50px;background:rgba(255,255,255,.06);
   border:2px solid transparent;color:var(--gray-light);cursor:pointer;font-weight:600;
@@ -168,64 +169,142 @@ header.scrolled{box-shadow:0 4px 25px rgba(0,0,0,.6)}
 .search-input:focus{outline:none;border-color:var(--primary);background:rgba(255,255,255,.1);
   box-shadow:0 0 0 3px rgba(108,92,231,.25)}
 
-.family-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  gap:1.2rem;perspective:1400px}
-.fam-card3d{
-  background:linear-gradient(160deg,rgba(45,45,65,.95),rgba(25,25,45,.95));
-  border:1px solid rgba(255,255,255,.1);border-radius:20px;
-  padding:1.5rem 1rem 1.2rem;text-align:center;position:relative;
-  transition:var(--transition);transform-style:preserve-3d;
-  box-shadow:0 8px 25px rgba(0,0,0,.35);
+/* ====== NAYA VERTICAL / ROW CARD ====== */
+.family-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+  gap:1rem}
+.fam-card-row{
+  background:linear-gradient(145deg, #232342 0%, #1a1a2e 100%);
+  border:1px solid rgba(108,92,231,.15);
+  border-radius:14px;
+  padding:.85rem 1rem;
+  display:flex;
+  align-items:center;
+  gap:.9rem;
+  transition:var(--transition);
+  box-shadow:0 4px 15px rgba(0,0,0,.35);
+  position:relative;
+  overflow:hidden;
 }
-.fam-card3d:hover{
-  transform:translateY(-8px) rotateX(4deg) rotateY(-4deg) scale(1.03);
-  border-color:rgba(108,92,231,.5);
-  box-shadow:0 20px 40px rgba(108,92,231,.25), 0 0 30px rgba(253,121,168,.15);
+.fam-card-row:hover{
+  border-color:rgba(0,212,255,.4);
+  transform:translateX(4px);
+  box-shadow:0 8px 25px rgba(0,0,0,.5), 0 0 20px rgba(0,212,255,.15);
 }
-.fam-card3d:before{content:'';position:absolute;top:0;left:0;right:0;height:5px;
-  border-radius:20px 20px 0 0;}
-.fam-card3d.instagram:before{background:linear-gradient(90deg,#833AB4,#E1306C,#F77737)}
-.fam-card3d.youtube:before{background:linear-gradient(90deg,#FF0000,#c4302b)}
-.fam-card3d.facebook:before{background:linear-gradient(90deg,#1877F2,#0a4fb5)}
+.fam-card-row.instagram:hover{border-color:rgba(225,48,108,.5)}
+.fam-card-row.youtube:hover{border-color:rgba(255,0,0,.5)}
+.fam-card-row.facebook:hover{border-color:rgba(24,119,242,.5)}
 
-.fam-rank{position:absolute;top:.8rem;right:.8rem;min-width:32px;height:32px;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-heading);font-weight:700;font-size:.75rem;color:#fff;
-  box-shadow:0 4px 10px rgba(0,0,0,.4);}
-.fam-rank.instagram{background:linear-gradient(135deg,#833AB4,#E1306C)}
-.fam-rank.youtube{background:linear-gradient(135deg,#FF0000,#c4302b)}
-.fam-rank.facebook{background:linear-gradient(135deg,#1877F2,#0a4fb5)}
+/* Left: Avatar + Number */
+.fam-left{
+  position:relative;
+  flex-shrink:0;
+}
+.fam-avatar-row{
+  width:54px;height:54px;border-radius:50%;object-fit:cover;
+  border:2px solid rgba(255,255,255,.15);
+  background:#333;transition:var(--transition);
+  display:block;
+}
+.fam-card-row:hover .fam-avatar-row{
+  border-color:var(--primary);
+  box-shadow:0 0 15px rgba(108,92,231,.5);
+}
+/* Number badge avatar ke corner pe (chhota) */
+.fam-num-badge{
+  position:absolute;bottom:-2px;right:-2px;
+  min-width:20px;height:20px;padding:0 5px;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.62rem;font-weight:800;color:#fff;
+  font-family:var(--font-main);
+  border:2px solid #1a1a2e;
+  box-shadow:0 2px 6px rgba(0,0,0,.5);
+}
+.fam-num-badge.instagram{background:linear-gradient(135deg,#833AB4,#E1306C)}
+.fam-num-badge.youtube{background:linear-gradient(135deg,#FF0000,#c4302b)}
+.fam-num-badge.facebook{background:linear-gradient(135deg,#1877F2,#0a4fb5)}
 
-.fam-avatar3d{width:80px;height:80px;border-radius:50%;object-fit:cover;
-  margin:0 auto .8rem;border:3px solid rgba(255,255,255,.15);
-  box-shadow:0 6px 15px rgba(0,0,0,.4);background:#333;
-  transition:var(--transition)}
-.fam-card3d:hover .fam-avatar3d{transform:translateZ(20px) scale(1.05);
-  border-color:var(--primary)}
-.fam-name{font-family:var(--font-main);font-weight:600;font-size:.95rem;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:.2rem}
-.fam-handle{font-size:.75rem;color:var(--gray);white-space:nowrap;
-  overflow:hidden;text-overflow:ellipsis;margin-bottom:.8rem}
-.fam-actions{display:flex;gap:.4rem;justify-content:center}
-.fam-btn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);
-  display:inline-flex;align-items:center;justify-content:center;color:var(--gray-light);
-  font-size:.8rem;border:1px solid rgba(255,255,255,.1);transition:var(--transition);cursor:pointer}
-.fam-btn:hover{background:linear-gradient(135deg,var(--primary),var(--secondary));
-  color:#fff;transform:scale(1.1)}
-.fam-btn.del:hover{background:linear-gradient(135deg,#D63031,#b02222)}
+/* Middle: Info */
+.fam-info-row{flex:1;min-width:0}
+.fam-name-row{
+  font-weight:700;font-size:.92rem;color:#fff;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  line-height:1.3;margin-bottom:.15rem;
+}
+.fam-handle-row{
+  font-size:.72rem;color:var(--primary-light);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  line-height:1.3;margin-bottom:.3rem;font-weight:500;
+}
+.fam-meta-row{
+  display:flex;align-items:center;gap:.5rem;font-size:.65rem;
+  color:var(--gray);flex-wrap:wrap;
+}
+.fam-meta-row .dot{opacity:.5}
+
+/* Right: Follow + Link */
+.fam-right{display:flex;flex-direction:column;gap:.35rem;flex-shrink:0}
+.fam-follow-btn, .fam-visit-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.35rem;
+  padding:.38rem .75rem;border-radius:8px;
+  font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.5px;transition:var(--transition);cursor:pointer;
+  border:none;text-decoration:none;white-space:nowrap;
+  min-width:74px;
+}
+.fam-follow-btn{
+  background:linear-gradient(135deg,#00d4ff,#00a8cc);
+  color:#001f2e;
+  box-shadow:0 3px 10px rgba(0,212,255,.3);
+}
+.fam-follow-btn:hover{
+  background:linear-gradient(135deg,#00e6ff,#00c2e6);
+  transform:translateY(-1px);
+  box-shadow:0 5px 15px rgba(0,212,255,.5);
+}
+.fam-follow-btn.instagram{
+  background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);color:#fff;
+}
+.fam-follow-btn.youtube{
+  background:linear-gradient(135deg,#FF0000,#c4302b);color:#fff;
+}
+.fam-follow-btn.facebook{
+  background:linear-gradient(135deg,#1877F2,#0a4fb5);color:#fff;
+}
+.fam-visit-btn{
+  background:rgba(255,255,255,.06);
+  color:var(--gray-light);
+  border:1px solid rgba(255,255,255,.12);
+}
+.fam-visit-btn:hover{
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  border-color:rgba(255,255,255,.25);
+}
+.fam-del-btn{
+  width:24px;height:24px;border-radius:6px;
+  background:rgba(214,48,49,.1);
+  color:#D63031;
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--transition);font-size:.7rem;
+  align-self:flex-start;
+}
+.fam-del-btn:hover{background:rgba(214,48,49,.3);transform:scale(1.1)}
 
 .empty-state{text-align:center;padding:3rem 1rem;color:var(--gray);grid-column:1/-1}
 .empty-state i{font-size:3rem;margin-bottom:1rem;opacity:.4}
 .empty-state p{font-size:.95rem}
 .no-results{text-align:center;padding:2rem;color:var(--gray);font-style:italic;grid-column:1/-1}
 
-.view-more-wrap{text-align:center;margin-top:2.5rem}
+.view-more-wrap{text-align:center;margin-top:2rem}
 .view-more-btn{padding:.9rem 2.5rem;background:linear-gradient(90deg,var(--primary),var(--secondary));
   color:#fff;border:none;border-radius:50px;font-weight:600;font-size:.9rem;
   text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:var(--transition);
   display:inline-flex;align-items:center;gap:.6rem;box-shadow:0 8px 25px rgba(108,92,231,.35)}
 .view-more-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(108,92,231,.5)}
 
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);
   z-index:2000;display:none;align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.open{display:flex;animation:fadeIn .25s ease}
@@ -259,15 +338,6 @@ header.scrolled{box-shadow:0 4px 25px rgba(0,0,0,.6)}
 .platform-option.selected[data-p="youtube"]{background:linear-gradient(135deg,#FF0000,#c4302b)}
 .platform-option.selected[data-p="facebook"]{background:linear-gradient(135deg,#1877F2,#0a4fb5)}
 
-.upload-area{border:2px dashed rgba(255,255,255,.2);border-radius:12px;padding:1rem;
-  text-align:center;cursor:pointer;transition:var(--transition);position:relative}
-.upload-area:hover{border-color:var(--primary);background:rgba(108,92,231,.05)}
-.upload-area input{display:none}
-.upload-preview{width:70px;height:70px;border-radius:50%;object-fit:cover;margin:0 auto .4rem;
-  display:none;border:2px solid var(--primary)}
-.upload-area p{font-size:.78rem;color:var(--gray)}
-.upload-area i{font-size:1.4rem;color:var(--primary-light);margin-bottom:.3rem}
-
 .csv-area{width:100%;min-height:120px;padding:.8rem;background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.12);border-radius:10px;font-family:monospace;
   font-size:.78rem;color:#fff;resize:vertical}
@@ -296,11 +366,29 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
 .footer-links ul li{margin-bottom:.5rem}
 .footer-links ul li a{color:var(--gray);display:flex;align-items:center;gap:.5rem;font-size:.82rem}
 .footer-links ul li a:hover{color:var(--primary-light);transform:translateX(5px)}
-.social-row{display:flex;gap:.45rem;margin-top:1rem;flex-wrap:wrap}
-.social-row a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);
-  display:flex;align-items:center;justify-content:center;color:#fff;transition:var(--transition);font-size:.85rem}
-.social-row a:hover{background:linear-gradient(135deg,var(--primary),var(--secondary));
-  transform:translateY(-4px)}
+
+.social-links-block h3{font-size:1.1rem;margin-bottom:.4rem;position:relative;padding-bottom:.6rem}
+.social-links-block h3:after{content:'';position:absolute;bottom:0;left:0;width:40px;height:3px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary))}
+.social-links-block .follow-text{color:var(--gray);font-size:.85rem;margin-bottom:1rem;
+  display:flex;align-items:center;gap:.4rem;font-style:italic}
+.social-links-block .follow-text i{color:var(--secondary)}
+.social-row{display:flex;gap:.55rem;flex-wrap:wrap}
+.social-row a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;color:#fff;transition:var(--transition);
+  font-size:1rem;border:1px solid rgba(255,255,255,.08)}
+.social-row a:hover{transform:translateY(-4px) scale(1.05);
+  box-shadow:0 8px 20px rgba(108,92,231,.35);border-color:transparent}
+.social-row a.yt:hover{background:linear-gradient(135deg,#FF0000,#c4302b)}
+.social-row a.ig:hover{background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)}
+.social-row a.fb:hover{background:linear-gradient(135deg,#1877F2,#0a4fb5)}
+.social-row a.tg:hover{background:linear-gradient(135deg,#229ED9,#1a7ba8)}
+.social-row a.tw:hover{background:linear-gradient(135deg,#1DA1F2,#0d6ea8)}
+.social-row a.li:hover{background:linear-gradient(135deg,#0A66C2,#064b8f)}
+.social-row a.sc:hover{background:linear-gradient(135deg,#FFFC00,#f0e800);color:#000}
+.social-row a.gl:hover{background:linear-gradient(135deg,#4285F4,#34A853)}
+.social-row a.wa:hover{background:linear-gradient(135deg,#25D366,#128C7E)}
+
 .copyright{border-top:1px solid rgba(255,255,255,.08);padding:1.5rem 0;text-align:center;
   color:var(--gray);font-size:.82rem}
 
@@ -331,8 +419,7 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
   .hero-btns{flex-direction:column}
   .panel-head{flex-direction:column;align-items:stretch}
   .search-wrap{max-width:100%}
-  .family-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.9rem}
-  .fam-avatar3d{width:65px;height:65px}
+  .family-grid{grid-template-columns:1fr;gap:.75rem}
   .add-btn span,.login-btn span{display:none}
   .add-btn,.login-btn{padding:.55rem .7rem}
 }
@@ -340,7 +427,11 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
   .hero-content h1{font-size:2rem}
   .section-title{font-size:1.8rem}
   .modal{padding:1.5rem}
-  .family-grid{grid-template-columns:repeat(2,1fr)}
+  .fam-card-row{padding:.7rem .8rem;gap:.6rem}
+  .fam-avatar-row{width:46px;height:46px}
+  .fam-name-row{font-size:.85rem}
+  .fam-right{gap:.25rem}
+  .fam-follow-btn,.fam-visit-btn{padding:.3rem .55rem;font-size:.6rem;min-width:62px}
 }
 </style>
 </head>
@@ -349,12 +440,12 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
 <header id="header">
   <div class="container">
     <nav class="navbar">
-      <a href="#home" class="logo">SURAJPROCREATER</a>
+      <a href="#home" class="logo">SURAJ AI</a>
       <ul class="nav-links">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#families">Familys</a></li>
+        <li><a href="#families">Families</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
@@ -429,7 +520,7 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
 
 <section id="families" class="section">
   <div class="container">
-    <h2 class="section-title">My <span class="text-gradient">Familys</span></h2>
+    <h2 class="section-title">My <span class="text-gradient">Families</span></h2>
 
     <div class="admin-toolbar" id="adminToolbar">
       <span class="label"><i class="fas fa-crown"></i> Admin Mode</span>
@@ -497,16 +588,6 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
           <div style="width:55px;height:55px;background:linear-gradient(135deg,rgba(108,92,231,.2),rgba(253,121,168,.2));border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary-light);border:2px solid var(--primary);flex-shrink:0"><i class="fas fa-phone-alt"></i></div>
           <div><h4 style="font-family:var(--font-main);font-size:1.05rem;margin-bottom:.3rem">Phone</h4><a href="tel:+919876543210" style="color:var(--gray-light)">+91 0987654321</a></div>
         </div>
-        <div class="social-row">
-          <a href="https://www.youtube.com/@surajprocreater1" title="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="https://t.me/boost/onlinebestdealshop" title="Telegram"><i class="fab fa-telegram"></i></a>
-          <a href="https://www.facebook.com/share/1Aj2aesAw8/" title="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://surajprocreater.blogspot.com/" title="Blogger"><i class="fab fa-google"></i></a>
-          <a href="https://www.linkedin.com/in/toon-mir-b11b6a370" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://www.instagram.com/surajprocreater" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://x.com/surajprocreater" title="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.snapchat.com/add/surajprocreater" title="Snapchat"><i class="fab fa-snapchat"></i></a>
-        </div>
       </div>
       <div style="background:rgba(30,30,30,.7);padding:2rem;border-radius:20px;border:1px solid rgba(255,255,255,.08)">
         <form action="https://formspree.io/f/xzdjbbel" method="POST">
@@ -525,32 +606,42 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
   <div class="container">
     <div class="footer-content">
       <div class="footer-about">
-        <div class="footer-logo">SURAJPROCREATER</div>
+        <div class="footer-logo">SURAJ MAURAY</div>
         <p>Creating digital experiences that inspire, engage, and convert.</p>
       </div>
       <div class="footer-links"><h3>Quick Links</h3><ul>
         <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
         <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
         <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-        <li><a href="#families"><i class="fas fa-chevron-right"></i> My family</a></li>
+        <li><a href="#families"><i class="fas fa-chevron-right"></i> Families</a></li>
         <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-      </ul></div>
-      <div class="footer-links"><h3>Follow Me</h3><ul>
-        <li><a href="https://www.youtube.com/@surajprocreater1"><i class="fab fa-youtube"></i> YouTube</a></li>
-        <li><a href="https://www.instagram.com/surajprocreater"><i class="fab fa-instagram"></i> Instagram</a></li>
-        <li><a href="https://www.facebook.com/share/1Aj2aesAw8/"><i class="fab fa-facebook"></i> Facebook</a></li>
-        <li><a href="https://x.com/surajprocreater"><i class="fab fa-twitter"></i> Twitter / X</a></li>
       </ul></div>
       <div class="footer-links"><h3>Contact</h3><ul>
         <li><a href="mailto:devlopersmartpro@gmail.com"><i class="fas fa-envelope"></i> devlopersmartpro@gmail.com</a></li>
         <li><a href="tel:+919876543210"><i class="fas fa-phone"></i> +91 0987654321</a></li>
         <li><a href="#"><i class="fas fa-map-marker-alt"></i> Nalanda, Bihar</a></li>
       </ul></div>
+      <div class="social-links-block">
+        <h3>Social Media</h3>
+        <p class="follow-text"><i class="fas fa-heart"></i> Follow me here</p>
+        <div class="social-row">
+          <a href="https://www.youtube.com/@surajprocreater1" class="yt" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/surajprocreater" class="ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1Aj2aesAw8/" class="fb" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://t.me/boost/onlinebestdealshop" class="tg" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://x.com/surajprocreater" class="tw" title="Twitter / X"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/toon-mir-b11b6a370" class="li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.snapchat.com/add/surajprocreater" class="sc" title="Snapchat"><i class="fab fa-snapchat"></i></a>
+          <a href="https://surajprocreater.blogspot.com/" class="gl" title="Blogger"><i class="fab fa-google"></i></a>
+          <a href="https://wa.me/919876543210" class="wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
     </div>
     <div class="copyright"><p>&copy; 2025 Suraj Creative Portfolio. All Rights Reserved.</p></div>
   </div>
 </footer>
 
+<!-- ADD MODAL -->
 <div class="modal-overlay" id="addModal">
   <div class="modal">
     <div class="modal-head">
@@ -566,23 +657,23 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
           <div class="platform-option" data-p="facebook"><i class="fab fa-facebook"></i> Facebook</div>
         </div>
       </div>
-      <div class="form-group"><label>Person Name *</label><input type="text" id="addName" class="form-control" placeholder="e.g. Rahul Kumar" required></div>
-      <div class="form-group"><label>Handle / Username *</label><input type="text" id="addHandle" class="form-control" placeholder="e.g. @rahul_k or full URL" required></div>
       <div class="form-group">
-        <label>Profile Image</label>
-        <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-          <img class="upload-preview" id="uploadPreview" alt="">
-          <i class="fas fa-cloud-upload-alt" id="uploadIcon"></i>
-          <p id="uploadText">Click to upload image (optional)</p>
-          <input type="file" id="fileInput" accept="image/*">
-        </div>
-        <input type="url" id="addImage" class="form-control" placeholder="…or paste image URL" style="margin-top:.5rem">
+        <label>Username / Handle *</label>
+        <input type="text" id="addHandle" class="form-control" placeholder="e.g. @rahul_k" required>
+        <p style="font-size:.72rem;color:var(--gray);margin-top:.35rem">
+          <i class="fas fa-info-circle"></i> Sirf handle daalo — naam auto ban jayega
+        </p>
+      </div>
+      <div class="form-group">
+        <label>Profile Image URL (optional)</label>
+        <input type="url" id="addImage" class="form-control" placeholder="https://example.com/photo.jpg">
       </div>
       <button type="submit" class="btn btn-primary" style="width:100%" id="submitAddBtn"><i class="fas fa-plus"></i> Add Member</button>
     </form>
   </div>
 </div>
 
+<!-- BULK MODAL -->
 <div class="modal-overlay" id="bulkModal">
   <div class="modal">
     <div class="modal-head">
@@ -599,16 +690,16 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
     </div>
     <div class="form-group">
       <label>Paste CSV</label>
-      <textarea class="csv-area" id="csvInput" placeholder="Name,Handle,ImageURL
-Rahul Kumar,@rahul_k,
-Priya Sharma,@priya_s,https://example.com/p.jpg"></textarea>
-      <p class="csv-help">Format: <code>Name,Handle,ImageURL</code> — har line ek member.</p>
+      <textarea class="csv-area" id="csvInput" placeholder="@rahul_k,https://example.com/photo.jpg
+@priya_s
+@amit_kumar"></textarea>
+      <p class="csv-help">Format: <code>Handle,ImageURL</code> — har line ek member.</p>
     </div>
     <button class="btn btn-primary" style="width:100%" id="btnDoImport"><i class="fas fa-upload"></i> Import</button>
   </div>
 </div>
 
-<!-- ✅ NEW SIMPLE PASSWORD LOGIN MODAL -->
+<!-- LOGIN MODAL -->
 <div class="modal-overlay" id="loginModal">
   <div class="modal" style="max-width:400px">
     <div class="modal-head">
@@ -619,7 +710,6 @@ Priya Sharma,@priya_s,https://example.com/p.jpg"></textarea>
       <div class="form-group">
         <label for="adminPassword">Enter Admin Password</label>
         <input type="password" id="adminPassword" class="form-control" placeholder="Enter password..." required autocomplete="off">
-        <p style="font-size:.75rem;color:var(--gray);margin-top:.4rem">Sirf password — koi email nahi</p>
       </div>
       <button type="submit" class="btn btn-primary" style="width:100%" id="loginSubmitBtn">
         <i class="fas fa-unlock"></i> Unlock Admin
@@ -637,53 +727,47 @@ import {
   getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot,
   writeBatch, getDocs, query, orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import {
-  getStorage, ref as storageRef, uploadBytes, getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 /* =========================================================
    ⚠️ PASTE YOUR FIREBASE CONFIG HERE
    ========================================================= */
 const firebaseConfig = {
-   apiKey: "AIzaSyCuBQeYqv41NY_C6PeNTa5zSW9RDWgabh8",
-  authDomain: "surajaiwebsite.firebaseapp.com",
-  databaseURL: "https://surajaiwebsite-default-rtdb.firebaseio.com",
-  projectId: "surajaiwebsite",
-  storageBucket: "surajaiwebsite.firebasestorage.app",
-  messagingSenderId: "376106400295",
-  appId: "1:376106400295:web:ae35267e12606611acec02",
-  measurementId: "G-XFM1ETWHL4"
+  apiKey: "PASTE_YOUR_API_KEY",
+  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
+  projectId: "PASTE_YOUR_PROJECT_ID",
+  storageBucket: "PASTE_YOUR_PROJECT.appspot.com",
+  messagingSenderId: "PASTE_YOUR_SENDER_ID",
+  appId: "PASTE_YOUR_APP_ID"
 };
 /* ========================================================= */
 
-/* =========================================================
-   🔐 ADMIN PASSWORD — YAHAN APNA PASSWORD SET KARO
-   Bas ye line change karo. Password jo chahiye wahi rakho.
-   ========================================================= */
-const ADMIN_PASSWORD = "suraj2025";   // 👈 apna password yahan likho
-/* ========================================================= */
+/* 🔐 ADMIN PASSWORD */
+const ADMIN_PASSWORD = "suraj2025";   // 👈 apna password yahan
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app);
 const familyCol = collection(db, "familyMembers");
 
-/* ---------- State ---------- */
 const PLATFORMS = ['instagram','youtube','facebook'];
 const VISIBLE_LIMIT = 5;
 const STORAGE_KEY = 'suraj_admin_unlocked';
 
 let allMembers = [];
-let currentUser = false;  // true = admin unlocked
+let currentUser = false;
 let activeTab = 'instagram';
 let expanded = { instagram:false, youtube:false, facebook:false };
 let selectedPlatform = 'instagram';
 let bulkPlatform = 'instagram';
-let uploadedImageUrl = '';
 const searchTerms = { instagram:'', youtube:'', facebook:'' };
 
-/* ---------- Helpers ---------- */
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+function handleToName(handle) {
+  if (!handle) return 'Unknown';
+  let clean = handle.replace(/^@/, '').replace(/[._-]+/g, ' ').trim();
+  return clean.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
 function getProfileUrl(m){
   const h = (m.handle || '').trim();
   if (h.startsWith('http://') || h.startsWith('https://')) return h;
@@ -693,6 +777,7 @@ function getProfileUrl(m){
   if (m.platform === 'facebook') return `https://facebook.com/${c}`;
   return '#';
 }
+
 function showToast(msg, type = 'success') {
   const t = document.getElementById('toast');
   document.getElementById('toastMsg').textContent = msg;
@@ -702,11 +787,9 @@ function showToast(msg, type = 'success') {
   window._toastT = setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-/* ---------- Modal helpers ---------- */
 function openModal(id){ const m = document.getElementById(id); if (m) m.classList.add('open'); }
 function closeModal(id){ const m = document.getElementById(id); if (m) m.classList.remove('open'); }
 
-/* ---------- Admin UI update ---------- */
 function updateAdminUI() {
   const addBtn = document.getElementById('openAddBtn');
   const loginBtn = document.getElementById('loginBtn');
@@ -726,7 +809,6 @@ function updateAdminUI() {
   PLATFORMS.forEach(renderPlatform);
 }
 
-/* ---------- Tabs ---------- */
 function initTabs() {
   const tabs = document.querySelectorAll('.fam-tab');
   tabs.forEach(tab => {
@@ -735,14 +817,12 @@ function initTabs() {
       tab.classList.add('active');
       activeTab = tab.dataset.tab;
       document.querySelectorAll('.family-panel').forEach(p => p.classList.remove('active'));
-      const panel = document.getElementById('panel-' + activeTab);
-      if (panel) panel.classList.add('active');
+      document.getElementById('panel-' + activeTab).classList.add('active');
       renderPlatform(activeTab);
     });
   });
 }
 
-/* ---------- Platform selector ---------- */
 function initPlatformSelectors() {
   document.querySelectorAll('#platformSelect .platform-option').forEach(opt => {
     opt.addEventListener('click', () => {
@@ -760,7 +840,6 @@ function initPlatformSelectors() {
   });
 }
 
-/* ---------- Buttons ---------- */
 function initButtons() {
   document.getElementById('openAddBtn').addEventListener('click', () => openModal('addModal'));
   document.getElementById('closeModal').addEventListener('click', () => closeModal('addModal'));
@@ -772,18 +851,15 @@ function initButtons() {
     el.addEventListener('click', e => { if (e.target.id === id) closeModal(id); });
   });
 
-  // Login button
   document.getElementById('loginBtn').addEventListener('click', () => {
-    if (currentUser) {
-      showToast('You are already admin');
-    } else {
+    if (currentUser) showToast('You are already admin');
+    else {
       openModal('loginModal');
       setTimeout(() => document.getElementById('adminPassword').focus(), 100);
     }
   });
 }
 
-/* ---------- Search ---------- */
 function initSearch() {
   PLATFORMS.forEach(p => {
     const el = document.getElementById('search-' + p);
@@ -794,7 +870,6 @@ function initSearch() {
   });
 }
 
-/* ---------- View more ---------- */
 function initViewMore() {
   document.querySelectorAll('.view-more-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -805,7 +880,6 @@ function initViewMore() {
   });
 }
 
-/* ---------- Render ---------- */
 function renderPlatform(platform) {
   const listEl = document.getElementById('list-' + platform);
   if (!listEl) return;
@@ -823,9 +897,9 @@ function renderPlatform(platform) {
   if (term) {
     members = members.filter(m => {
       const num = String(m.displayNum);
-      return num === term || num.startsWith(term) ||
-        (m.name || '').toLowerCase().includes(term) ||
-        (m.handle || '').toLowerCase().includes(term);
+      const nm = (m.name || '').toLowerCase();
+      const hd = (m.handle || '').toLowerCase();
+      return num === term || num.startsWith(term) || nm.includes(term) || hd.includes(term);
     });
   }
 
@@ -855,26 +929,49 @@ function renderPlatform(platform) {
   }
 
   listEl.innerHTML = visible.map(m => {
+    const displayName = m.name || handleToName(m.handle);
     const avatar = m.image
-      ? `<img class="fam-avatar3d" src="${escapeHtml(m.image)}" alt="${escapeHtml(m.name)}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(m.name)}&background=6C5CE7&color=fff&size=200'">`
-      : `<img class="fam-avatar3d" src="https://ui-avatars.com/api/?name=${encodeURIComponent(m.name)}&background=6C5CE7&color=fff&size=200" alt="${escapeHtml(m.name)}">`;
+      ? `<img class="fam-avatar-row" src="${escapeHtml(m.image)}" alt="${escapeHtml(displayName)}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=6C5CE7&color=fff&size=200&bold=true'">`
+      : `<img class="fam-avatar-row" src="https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=6C5CE7&color=fff&size=200&bold=true" alt="${escapeHtml(displayName)}">`;
     const profileUrl = getProfileUrl(m);
     const delBtn = currentUser
-      ? `<button class="fam-btn del" data-id="${m.id}" title="Remove"><i class="fas fa-trash"></i></button>`
+      ? `<button class="fam-del-btn" data-id="${m.id}" title="Remove"><i class="fas fa-trash"></i></button>`
       : '';
-    return `<div class="fam-card3d ${platform}">
-      <div class="fam-rank ${platform}">#${m.displayNum}</div>
-      ${avatar}
-      <div class="fam-name">${escapeHtml(m.name)}</div>
-      <div class="fam-handle">${escapeHtml(m.handle)}</div>
-      <div class="fam-actions">
-        <a class="fam-btn" href="${escapeHtml(profileUrl)}" target="_blank" rel="noopener" title="Open profile"><i class="fas fa-external-link-alt"></i></a>
-        ${delBtn}
+
+    // platform icons
+    let platformIcon = 'fa-instagram';
+    if (platform === 'youtube') platformIcon = 'fa-youtube';
+    if (platform === 'facebook') platformIcon = 'fa-facebook';
+
+    return `
+      <div class="fam-card-row ${platform}">
+        <div class="fam-left">
+          ${avatar}
+          <span class="fam-num-badge ${platform}">#${m.displayNum}</span>
+        </div>
+        <div class="fam-info-row">
+          <div class="fam-name-row">${escapeHtml(displayName)}</div>
+          <div class="fam-handle-row">${escapeHtml(m.handle)}</div>
+          <div class="fam-meta-row">
+            <span><i class="fab ${platformIcon}"></i> ${platform.charAt(0).toUpperCase()+platform.slice(1)}</span>
+            <span class="dot">•</span>
+            <span>Member</span>
+          </div>
+        </div>
+        <div class="fam-right">
+          <a class="fam-follow-btn ${platform}" href="${escapeHtml(profileUrl)}" target="_blank" rel="noopener" title="Follow">
+            <i class="fas fa-plus"></i> Follow
+          </a>
+          <a class="fam-visit-btn" href="${escapeHtml(profileUrl)}" target="_blank" rel="noopener" title="Visit Profile">
+            <i class="fas fa-external-link-alt"></i> Visit
+          </a>
+          ${delBtn}
+        </div>
       </div>
-    </div>`;
+    `;
   }).join('');
 
-  listEl.querySelectorAll('.fam-btn.del').forEach(btn => {
+  listEl.querySelectorAll('.fam-del-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
       if (!confirm('Remove this member?')) return;
       try {
@@ -886,7 +983,6 @@ function renderPlatform(platform) {
   });
 }
 
-/* ---------- Renumber ---------- */
 async function renumberPlatform(platform) {
   try {
     const snap = await getDocs(query(familyCol, orderBy('order')));
@@ -898,46 +994,16 @@ async function renumberPlatform(platform) {
   } catch (err) { console.error(err); }
 }
 
-/* ---------- Image upload ---------- */
-function initImageUpload() {
-  const fileInput = document.getElementById('fileInput');
-  const uploadPreview = document.getElementById('uploadPreview');
-  const uploadIcon = document.getElementById('uploadIcon');
-  const uploadText = document.getElementById('uploadText');
-
-  fileInput.addEventListener('change', async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    uploadPreview.src = URL.createObjectURL(file);
-    uploadPreview.style.display = 'block';
-    uploadIcon.style.display = 'none';
-    uploadText.textContent = 'Uploading...';
-    try {
-      const path = `family/${Date.now()}_${file.name}`;
-      const ref = storageRef(storage, path);
-      await uploadBytes(ref, file);
-      uploadedImageUrl = await getDownloadURL(ref);
-      uploadText.textContent = '✓ Uploaded';
-      showToast('Image uploaded');
-    } catch (err) {
-      console.error(err);
-      uploadText.textContent = 'Upload failed — use URL';
-      showToast('Upload failed. Check Storage rules.', 'error');
-    }
-  });
-}
-
-/* ---------- Add member ---------- */
 function initAddForm() {
   document.getElementById('addForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = document.getElementById('addName').value.trim();
     const handle = document.getElementById('addHandle').value.trim();
     const urlInput = document.getElementById('addImage').value.trim();
-    const image = uploadedImageUrl || urlInput;
 
-    if (!name || !handle) { showToast('Name and handle required', 'error'); return; }
+    if (!handle) { showToast('Handle required', 'error'); return; }
     if (!currentUser) { showToast('Please unlock admin first', 'error'); openModal('loginModal'); return; }
+
+    const name = handleToName(handle);
 
     const btn = document.getElementById('submitAddBtn');
     btn.disabled = true;
@@ -948,20 +1014,19 @@ function initAddForm() {
       const nextOrder = platformMembers.length ? Math.max(...platformMembers.map(m => m.order || 0)) + 1 : 1;
 
       await addDoc(familyCol, {
-        platform: selectedPlatform, name, handle,
-        image: image || '', order: nextOrder,
+        platform: selectedPlatform,
+        name: name,
+        handle: handle,
+        image: urlInput || '',
+        order: nextOrder,
         createdAt: Date.now()
       });
 
-      showToast(`${name} added to ${selectedPlatform}!`);
+      showToast(`${name} added!`);
       document.getElementById('addForm').reset();
       document.querySelectorAll('#platformSelect .platform-option').forEach(o => o.classList.remove('selected'));
       document.querySelector('#platformSelect .platform-option[data-p="instagram"]').classList.add('selected');
       selectedPlatform = 'instagram';
-      uploadedImageUrl = '';
-      document.getElementById('uploadPreview').style.display = 'none';
-      document.getElementById('uploadIcon').style.display = 'block';
-      document.getElementById('uploadText').textContent = 'Click to upload image (optional)';
       closeModal('addModal');
     } catch (err) {
       console.error(err);
@@ -973,7 +1038,6 @@ function initAddForm() {
   });
 }
 
-/* ---------- Simple password login ---------- */
 function initLogin() {
   document.getElementById('loginForm').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -993,7 +1057,6 @@ function initLogin() {
     }
   });
 
-  // Logout
   document.getElementById('btnLogout').addEventListener('click', () => {
     currentUser = false;
     localStorage.removeItem(STORAGE_KEY);
@@ -1002,7 +1065,6 @@ function initLogin() {
   });
 }
 
-/* ---------- Bulk import ---------- */
 function initBulk() {
   document.getElementById('btnBulkImport').addEventListener('click', () => openModal('bulkModal'));
   document.getElementById('btnDoImport').addEventListener('click', async () => {
@@ -1021,12 +1083,15 @@ function initBulk() {
 
     for (const line of lines) {
       const parts = line.split(',').map(p => p.trim());
-      const [name, handle, image] = parts;
-      if (!name || !handle) { failed++; continue; }
+      const [handle, image] = parts;
+      if (!handle) { failed++; continue; }
       try {
         await addDoc(familyCol, {
-          platform: bulkPlatform, name, handle,
-          image: image || '', order: nextOrder++,
+          platform: bulkPlatform,
+          name: handleToName(handle),
+          handle: handle,
+          image: image || '',
+          order: nextOrder++,
           createdAt: Date.now()
         });
         added++;
@@ -1041,7 +1106,6 @@ function initBulk() {
   });
 }
 
-/* ---------- Export ---------- */
 function initExport() {
   document.getElementById('btnExport').addEventListener('click', () => {
     if (!allMembers.length) { showToast('No members to export', 'error'); return; }
@@ -1049,7 +1113,7 @@ function initExport() {
     allMembers.slice().sort((a,b) => a.platform.localeCompare(b.platform) || (a.order||0)-(b.order||0))
       .forEach(m => rows.push([
         m.platform, m.order || '',
-        (m.name || '').replace(/,/g, ' '),
+        (m.name || handleToName(m.handle)).replace(/,/g, ' '),
         (m.handle || '').replace(/,/g, ' '),
         m.image || '', getProfileUrl(m)
       ]));
@@ -1064,15 +1128,11 @@ function initExport() {
   });
 }
 
-/* ---------- Restore login from localStorage ---------- */
 function restoreLogin() {
-  if (localStorage.getItem(STORAGE_KEY) === '1') {
-    currentUser = true;
-  }
+  if (localStorage.getItem(STORAGE_KEY) === '1') currentUser = true;
   updateAdminUI();
 }
 
-/* ---------- Realtime data ---------- */
 function initRealtime() {
   onSnapshot(familyCol, snap => {
     allMembers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
@@ -1083,7 +1143,6 @@ function initRealtime() {
   });
 }
 
-/* ---------- Misc ---------- */
 function initMisc() {
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.querySelector('.nav-links');
@@ -1136,13 +1195,11 @@ function initMisc() {
   }
 }
 
-/* ---------- INIT ALL ---------- */
 initTabs();
 initPlatformSelectors();
 initButtons();
 initSearch();
 initViewMore();
-initImageUpload();
 initAddForm();
 initLogin();
 initBulk();
