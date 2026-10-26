@@ -169,9 +169,77 @@ header.scrolled{box-shadow:0 4px 25px rgba(0,0,0,.6)}
 .search-input:focus{outline:none;border-color:var(--primary);background:rgba(255,255,255,.1);
   box-shadow:0 0 0 3px rgba(108,92,231,.25)}
 
-/* ====== NAYA VERTICAL / ROW CARD ====== */
+/* ====== ROW CARD with MEDAL NUMBER ====== */
 .family-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
   gap:1rem}
+
+/* -------- MEDAL BADGE (Gold/Silver/Bronze) -------- */
+.medal{
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-heading);font-weight:800;font-size:1.5rem;
+  color:#fff;flex-shrink:0;position:relative;
+  text-shadow:0 2px 4px rgba(0,0,0,.4);
+  box-shadow:inset 0 -4px 8px rgba(0,0,0,.3), inset 0 4px 8px rgba(255,255,255,.3),
+             0 4px 12px rgba(0,0,0,.5);
+}
+.medal:before{
+  content:'';position:absolute;inset:-3px;border-radius:50%;
+  z-index:-1;
+}
+/* GOLD — rank 1 */
+.medal.gold{
+  background:radial-gradient(circle at 30% 30%, #FFE57A, #FFC300 40%, #B8860B 100%);
+  color:#5a3d00;
+}
+.medal.gold:before{
+  background:radial-gradient(circle, #FFD700, #B8860B);
+  box-shadow:0 0 20px rgba(255,215,0,.5);
+}
+/* SILVER — rank 2 */
+.medal.silver{
+  background:radial-gradient(circle at 30% 30%, #F0F0F0, #C0C0C0 40%, #808080 100%);
+  color:#3a3a3a;
+}
+.medal.silver:before{
+  background:radial-gradient(circle, #E8E8E8, #808080);
+  box-shadow:0 0 20px rgba(192,192,192,.4);
+}
+/* BRONZE — rank 3 */
+.medal.bronze{
+  background:radial-gradient(circle at 30% 30%, #FFB56B, #CD7F32 40%, #8B4513 100%);
+  color:#3d1f00;
+}
+.medal.bronze:before{
+  background:radial-gradient(circle, #CD7F32, #8B4513);
+  box-shadow:0 0 20px rgba(205,127,50,.45);
+}
+/* Other — purple (rank 4+) */
+.medal.other{
+  background:radial-gradient(circle at 30% 30%, #A29BFE, #6C5CE7 40%, #4834d4 100%);
+  color:#fff;
+}
+.medal.other:before{
+  background:radial-gradient(circle, #6C5CE7, #4834d4);
+  box-shadow:0 0 20px rgba(108,92,231,.4);
+}
+
+/* Rank number inside */
+.medal span{position:relative;z-index:1}
+
+/* Mini stars below medal (decoration) */
+.medal-wrap{
+  position:relative;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+}
+.medal-stars{
+  font-size:.5rem;color:#FFD700;letter-spacing:1px;
+  text-shadow:0 1px 2px rgba(0,0,0,.5);
+}
+.medal.silver ~ .medal-stars{color:#E8E8E8}
+.medal.bronze ~ .medal-stars{color:#FFB56B}
+.medal.other ~ .medal-stars{color:#A29BFE}
+
 .fam-card-row{
   background:linear-gradient(145deg, #232342 0%, #1a1a2e 100%);
   border:1px solid rgba(108,92,231,.15);
@@ -194,37 +262,7 @@ header.scrolled{box-shadow:0 4px 25px rgba(0,0,0,.6)}
 .fam-card-row.youtube:hover{border-color:rgba(255,0,0,.5)}
 .fam-card-row.facebook:hover{border-color:rgba(24,119,242,.5)}
 
-/* Left: Avatar + Number */
-.fam-left{
-  position:relative;
-  flex-shrink:0;
-}
-.fam-avatar-row{
-  width:54px;height:54px;border-radius:50%;object-fit:cover;
-  border:2px solid rgba(255,255,255,.15);
-  background:#333;transition:var(--transition);
-  display:block;
-}
-.fam-card-row:hover .fam-avatar-row{
-  border-color:var(--primary);
-  box-shadow:0 0 15px rgba(108,92,231,.5);
-}
-/* Number badge avatar ke corner pe (chhota) */
-.fam-num-badge{
-  position:absolute;bottom:-2px;right:-2px;
-  min-width:20px;height:20px;padding:0 5px;
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.62rem;font-weight:800;color:#fff;
-  font-family:var(--font-main);
-  border:2px solid #1a1a2e;
-  box-shadow:0 2px 6px rgba(0,0,0,.5);
-}
-.fam-num-badge.instagram{background:linear-gradient(135deg,#833AB4,#E1306C)}
-.fam-num-badge.youtube{background:linear-gradient(135deg,#FF0000,#c4302b)}
-.fam-num-badge.facebook{background:linear-gradient(135deg,#1877F2,#0a4fb5)}
-
-/* Middle: Info */
+/* Middle info */
 .fam-info-row{flex:1;min-width:0}
 .fam-name-row{
   font-weight:700;font-size:.92rem;color:#fff;
@@ -242,7 +280,7 @@ header.scrolled{box-shadow:0 4px 25px rgba(0,0,0,.6)}
 }
 .fam-meta-row .dot{opacity:.5}
 
-/* Right: Follow + Link */
+/* Right buttons */
 .fam-right{display:flex;flex-direction:column;gap:.35rem;flex-shrink:0}
 .fam-follow-btn, .fam-visit-btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.35rem;
@@ -262,25 +300,13 @@ header.scrolled{box-shadow:0 4px 25px rgba(0,0,0,.6)}
   transform:translateY(-1px);
   box-shadow:0 5px 15px rgba(0,212,255,.5);
 }
-.fam-follow-btn.instagram{
-  background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);color:#fff;
-}
-.fam-follow-btn.youtube{
-  background:linear-gradient(135deg,#FF0000,#c4302b);color:#fff;
-}
-.fam-follow-btn.facebook{
-  background:linear-gradient(135deg,#1877F2,#0a4fb5);color:#fff;
-}
-.fam-visit-btn{
-  background:rgba(255,255,255,.06);
-  color:var(--gray-light);
-  border:1px solid rgba(255,255,255,.12);
-}
-.fam-visit-btn:hover{
-  background:rgba(255,255,255,.12);
-  color:#fff;
-  border-color:rgba(255,255,255,.25);
-}
+.fam-follow-btn.instagram{background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);color:#fff}
+.fam-follow-btn.youtube{background:linear-gradient(135deg,#FF0000,#c4302b);color:#fff}
+.fam-follow-btn.facebook{background:linear-gradient(135deg,#1877F2,#0a4fb5);color:#fff}
+.fam-visit-btn{background:rgba(255,255,255,.06);color:var(--gray-light);
+  border:1px solid rgba(255,255,255,.12)}
+.fam-visit-btn:hover{background:rgba(255,255,255,.12);color:#fff;
+  border-color:rgba(255,255,255,.25)}
 .fam-del-btn{
   width:24px;height:24px;border-radius:6px;
   background:rgba(214,48,49,.1);
@@ -428,7 +454,7 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
   .section-title{font-size:1.8rem}
   .modal{padding:1.5rem}
   .fam-card-row{padding:.7rem .8rem;gap:.6rem}
-  .fam-avatar-row{width:46px;height:46px}
+  .medal{width:46px;height:46px;font-size:1.2rem}
   .fam-name-row{font-size:.85rem}
   .fam-right{gap:.25rem}
   .fam-follow-btn,.fam-visit-btn{padding:.3rem .55rem;font-size:.6rem;min-width:62px}
@@ -664,10 +690,6 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
           <i class="fas fa-info-circle"></i> Sirf handle daalo — naam auto ban jayega
         </p>
       </div>
-      <div class="form-group">
-        <label>Profile Image URL (optional)</label>
-        <input type="url" id="addImage" class="form-control" placeholder="https://example.com/photo.jpg">
-      </div>
       <button type="submit" class="btn btn-primary" style="width:100%" id="submitAddBtn"><i class="fas fa-plus"></i> Add Member</button>
     </form>
   </div>
@@ -689,11 +711,11 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
       </div>
     </div>
     <div class="form-group">
-      <label>Paste CSV</label>
-      <textarea class="csv-area" id="csvInput" placeholder="@rahul_k,https://example.com/photo.jpg
+      <label>Paste CSV (Handle only)</label>
+      <textarea class="csv-area" id="csvInput" placeholder="@rahul_k
 @priya_s
 @amit_kumar"></textarea>
-      <p class="csv-help">Format: <code>Handle,ImageURL</code> — har line ek member.</p>
+      <p class="csv-help">Har line ek handle — naam auto ban jayega.</p>
     </div>
     <button class="btn btn-primary" style="width:100%" id="btnDoImport"><i class="fas fa-upload"></i> Import</button>
   </div>
@@ -742,8 +764,7 @@ const firebaseConfig = {
 };
 /* ========================================================= */
 
-/* 🔐 ADMIN PASSWORD */
-const ADMIN_PASSWORD = "suraj2025";   // 👈 apna password yahan
+const ADMIN_PASSWORD = "suraj2025";   // 👈 apna password
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -881,6 +902,14 @@ function initViewMore() {
   });
 }
 
+/* Medal class based on rank */
+function medalClass(rank) {
+  if (rank === 1) return 'gold';
+  if (rank === 2) return 'silver';
+  if (rank === 3) return 'bronze';
+  return 'other';
+}
+
 function renderPlatform(platform) {
   const listEl = document.getElementById('list-' + platform);
   if (!listEl) return;
@@ -931,24 +960,21 @@ function renderPlatform(platform) {
 
   listEl.innerHTML = visible.map(m => {
     const displayName = m.name || handleToName(m.handle);
-    const avatar = m.image
-      ? `<img class="fam-avatar-row" src="${escapeHtml(m.image)}" alt="${escapeHtml(displayName)}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=6C5CE7&color=fff&size=200&bold=true'">`
-      : `<img class="fam-avatar-row" src="https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=6C5CE7&color=fff&size=200&bold=true" alt="${escapeHtml(displayName)}">`;
     const profileUrl = getProfileUrl(m);
     const delBtn = currentUser
       ? `<button class="fam-del-btn" data-id="${m.id}" title="Remove"><i class="fas fa-trash"></i></button>`
       : '';
+    const mClass = medalClass(m.displayNum);
 
-    // platform icons
     let platformIcon = 'fa-instagram';
     if (platform === 'youtube') platformIcon = 'fa-youtube';
     if (platform === 'facebook') platformIcon = 'fa-facebook';
 
     return `
       <div class="fam-card-row ${platform}">
-        <div class="fam-left">
-          ${avatar}
-          <span class="fam-num-badge ${platform}">#${m.displayNum}</span>
+        <div class="medal-wrap">
+          <div class="medal ${mClass}"><span>${m.displayNum}</span></div>
+          <div class="medal-stars">★★★</div>
         </div>
         <div class="fam-info-row">
           <div class="fam-name-row">${escapeHtml(displayName)}</div>
@@ -956,7 +982,7 @@ function renderPlatform(platform) {
           <div class="fam-meta-row">
             <span><i class="fab ${platformIcon}"></i> ${platform.charAt(0).toUpperCase()+platform.slice(1)}</span>
             <span class="dot">•</span>
-            <span>Member</span>
+            <span>Member #${m.displayNum}</span>
           </div>
         </div>
         <div class="fam-right">
@@ -999,7 +1025,6 @@ function initAddForm() {
   document.getElementById('addForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const handle = document.getElementById('addHandle').value.trim();
-    const urlInput = document.getElementById('addImage').value.trim();
 
     if (!handle) { showToast('Handle required', 'error'); return; }
     if (!currentUser) { showToast('Please unlock admin first', 'error'); openModal('loginModal'); return; }
@@ -1018,7 +1043,6 @@ function initAddForm() {
         platform: selectedPlatform,
         name: name,
         handle: handle,
-        image: urlInput || '',
         order: nextOrder,
         createdAt: Date.now()
       });
@@ -1083,15 +1107,13 @@ function initBulk() {
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Importing...';
 
     for (const line of lines) {
-      const parts = line.split(',').map(p => p.trim());
-      const [handle, image] = parts;
+      const handle = line.trim();
       if (!handle) { failed++; continue; }
       try {
         await addDoc(familyCol, {
           platform: bulkPlatform,
           name: handleToName(handle),
           handle: handle,
-          image: image || '',
           order: nextOrder++,
           createdAt: Date.now()
         });
@@ -1110,13 +1132,13 @@ function initBulk() {
 function initExport() {
   document.getElementById('btnExport').addEventListener('click', () => {
     if (!allMembers.length) { showToast('No members to export', 'error'); return; }
-    const rows = [['Platform','Number','Name','Handle','Image','ProfileURL']];
+    const rows = [['Platform','Number','Name','Handle','ProfileURL']];
     allMembers.slice().sort((a,b) => a.platform.localeCompare(b.platform) || (a.order||0)-(b.order||0))
       .forEach(m => rows.push([
         m.platform, m.order || '',
         (m.name || handleToName(m.handle)).replace(/,/g, ' '),
         (m.handle || '').replace(/,/g, ' '),
-        m.image || '', getProfileUrl(m)
+        getProfileUrl(m)
       ]));
     const csv = rows.map(r => r.join(',')).join('\n');
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
