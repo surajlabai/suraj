@@ -197,7 +197,7 @@ header.scrolled{box-shadow:0 4px 25px rgba(0,0,0,.6)}
   box-shadow:0 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(108,92,231,0.2);
 }
 
-/* ===== 3D PROFESSIONAL GOLD MEDAL (Fixed) ===== */
+/* ===== 3D PROFESSIONAL GOLD MEDAL ===== */
 .medal-wrapper {
   width: 70px;
   height: 70px;
@@ -837,7 +837,7 @@ function showToast(msg, type = 'success') {
   t.className = 'toast show ' + type;
   t.querySelector('i').className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
   clearTimeout(window._toastT);
-  window._toastT = setTimeout(() => t.classList.remove('show'), 3000);
+  window._toastT = setTimeout(() => t.classList.remove('show'), 5000); // 5 seconds tak dikhega
 }
 
 function openModal(id){ const m = document.getElementById(id); if (m) m.classList.add('open'); }
@@ -1058,6 +1058,9 @@ async function renumberPlatform(platform) {
   } catch (err) { console.error(err); }
 }
 
+/* =========================================================
+   🚀 FIXED ADD FORM (With 5 sec timeout so it never hangs)
+   ========================================================= */
 function initAddForm() {
   document.getElementById('addForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -1067,10 +1070,17 @@ function initAddForm() {
     if (!currentUser) { showToast('Please unlock admin first', 'error'); openModal('loginModal'); return; }
 
     const name = handleToName(handle);
-
     const btn = document.getElementById('submitAddBtn');
+    
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+
+    // Timeout setup: Agar 5 second me save nahi hua, toh reset kardo
+    const timeoutId = setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-plus"></i> Add Member';
+      showToast('Error: Server not responding. Check your Firebase Config!', 'error');
+    }, 5000);
 
     try {
       const platformMembers = allMembers.filter(m => m.platform === selectedPlatform);
@@ -1084,6 +1094,7 @@ function initAddForm() {
         createdAt: Date.now()
       });
 
+      clearTimeout(timeoutId); // Agar save ho gaya, toh timer hata do
       showToast(`${name} added!`);
       document.getElementById('addForm').reset();
       document.querySelectorAll('#platformSelect .platform-option').forEach(o => o.classList.remove('selected'));
@@ -1093,8 +1104,9 @@ function initAddForm() {
       closeModal('addModal');
       
     } catch (err) {
+      clearTimeout(timeoutId);
       console.error(err);
-      showToast('Failed. Check Firestore rules.', 'error');
+      showToast('Failed! Check Firestore Rules & Config.', 'error');
     } finally {
       btn.disabled = false;
       btn.innerHTML = '<i class="fas fa-plus"></i> Add Member';
