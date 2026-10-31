@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suraj | Premium Creative Portfolio</title>
+<title>SURAJPROCREATER</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -197,96 +197,41 @@ header.scrolled{box-shadow:0 4px 25px rgba(0,0,0,.6)}
   box-shadow:0 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(108,92,231,0.2);
 }
 
-/* ===== 3D PROFESSIONAL GOLD MEDAL ===== */
-.medal-wrapper {
-  width: 70px;
-  height: 70px;
-  flex-shrink: 0;
+/* ===== MODERN PROFESSIONAL BADGE (Scales beautifully to 1M) ===== */
+.rank-badge {
+  min-width: 55px;
+  height: 55px;
+  padding: 0 12px;
+  border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-}
-
-.medal-3d {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-/* The Circular Face */
-.medal-face {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border-radius: 50%;
-  z-index: 2;
-  background: radial-gradient(circle at 30% 30%, #F9E596 0%, #D4AF37 30%, #AA7A1E 70%, #6B4A0A 100%);
-  box-shadow: 
-    inset 0 3px 6px rgba(255,255,255,0.7),
-    inset 0 -4px 8px rgba(0,0,0,0.5),
-    0 8px 20px rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Decorative Engravings */
-.medal-deco {
-  position: absolute;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  color: rgba(107, 74, 10, 0.85); 
-}
-
-.deco-crown { 
-  position: absolute; 
-  top: 10px; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  font-size: 14px; 
-  text-shadow: 1px 1px 0px rgba(255,255,255,0.3), -1px -1px 0px rgba(0,0,0,0.4);
-}
-
-.deco-leaves { 
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  width: 85%; 
-  height: 85%; 
-  opacity: 0.9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 46px; 
-}
-.deco-leaves i {
-  text-shadow: 1px 1px 0px rgba(255,255,255,0.3), -1px -1px 0px rgba(0,0,0,0.4);
-}
-
-.deco-stars { 
-  position: absolute; 
-  bottom: 10px; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  font-size: 8px; 
-  letter-spacing: 3px; 
-  text-shadow: 1px 1px 0px rgba(255,255,255,0.3), -1px -1px 0px rgba(0,0,0,0.4);
-}
-
-/* The Number */
-.medal-num {
-  position: relative;
-  z-index: 10;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 1.8rem;
-  color: #4A3000; 
-  text-shadow: 
-    1px 1px 0px rgba(255,255,255,0.4), 
-    -1px -1px 0px rgba(0,0,0,0.5),
-    0 0 10px rgba(212, 175, 55, 0.5);
+  font-size: 1.3rem;
+  color: #fff;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 2px 5px rgba(255,255,255,0.05);
+  transition: var(--transition);
+}
+
+/* Platform specific badge colors */
+.fam-card-row.instagram .rank-badge {
+  border-color: rgba(225,48,108,0.5);
+  background: rgba(225,48,108,0.1);
+  box-shadow: 0 4px 15px rgba(225,48,108,0.2);
+}
+.fam-card-row.youtube .rank-badge {
+  border-color: rgba(255,0,0,0.5);
+  background: rgba(255,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(255,0,0,0.2);
+}
+.fam-card-row.facebook .rank-badge {
+  border-color: rgba(24,119,242,0.5);
+  background: rgba(24,119,242,0.1);
+  box-shadow: 0 4px 15px rgba(24,119,242,0.2);
 }
 
 /* Middle info */
@@ -481,11 +426,7 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
   .section-title{font-size:1.8rem}
   .modal{padding:1.5rem}
   .fam-card-row{padding:.7rem .8rem;gap:.6rem}
-  .medal-wrapper{width:56px;height:56px}
-  .medal-num{font-size:1.4rem}
-  .deco-crown{font-size: 12px;}
-  .deco-leaves{font-size: 36px;}
-  .deco-stars{font-size: 7px;}
+  .rank-badge{min-width:45px;height:45px;font-size:1.1rem;padding:0 8px}
   .fam-name-row{font-size:.85rem}
   .fam-right{gap:.25rem}
   .fam-follow-btn,.fam-visit-btn{padding:.3rem .55rem;font-size:.6rem;min-width:62px}
@@ -785,7 +726,7 @@ import {
    ⚠️ PASTE YOUR FIREBASE CONFIG HERE
    ========================================================= */
 const firebaseConfig = {
-  apiKey: "AIzaSyCuBQeYqv41NY_C6PeNTa5zSW9RDWgabh8",
+   apiKey: "AIzaSyCuBQeYqv41NY_C6PeNTa5zSW9RDWgabh8",
   authDomain: "surajaiwebsite.firebaseapp.com",
   databaseURL: "https://surajaiwebsite-default-rtdb.firebaseio.com",
   projectId: "surajaiwebsite",
@@ -837,7 +778,7 @@ function showToast(msg, type = 'success') {
   t.className = 'toast show ' + type;
   t.querySelector('i').className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
   clearTimeout(window._toastT);
-  window._toastT = setTimeout(() => t.classList.remove('show'), 5000); // 5 seconds tak dikhega
+  window._toastT = setTimeout(() => t.classList.remove('show'), 5000); 
 }
 
 function openModal(id){ const m = document.getElementById(id); if (m) m.classList.add('open'); }
@@ -933,22 +874,9 @@ function initViewMore() {
   });
 }
 
-/* ========== 🏅 PREMIUM PROFESSIONAL GOLD MEDAL ========== */
-function getPremiumMedalHTML(rank) {
-  return `
-    <div class="medal-wrapper">
-      <div class="medal-3d">
-        <div class="medal-face">
-          <div class="medal-deco">
-            <i class="fas fa-crown deco-crown"></i>
-            <div class="deco-leaves"><i class="fas fa-leaf"></i></div>
-            <div class="deco-stars">★ ★ ★</div>
-          </div>
-          <span class="medal-num">${rank}</span>
-        </div>
-      </div>
-    </div>
-  `;
+/* ========== ✨ MODERN PROFESSIONAL BADGE RENDER ========== */
+function getRankBadgeHTML(rank) {
+  return `<div class="rank-badge">${rank}</div>`;
 }
 
 function renderPlatform(platform) {
@@ -1007,12 +935,21 @@ function renderPlatform(platform) {
       : '';
 
     let platformIcon = 'fa-instagram';
-    if (platform === 'youtube') platformIcon = 'fa-youtube';
-    if (platform === 'facebook') platformIcon = 'fa-facebook';
+    let actionText = 'Follow';
+    let actionIcon = 'fa-plus';
+
+    if (platform === 'youtube') {
+      platformIcon = 'fa-youtube';
+      actionText = 'Subscribe';
+      actionIcon = 'fa-bell';
+    }
+    if (platform === 'facebook') {
+      platformIcon = 'fa-facebook';
+    }
 
     return `
       <div class="fam-card-row ${platform}">
-        ${getPremiumMedalHTML(m.displayNum)}
+        ${getRankBadgeHTML(m.displayNum)}
         <div class="fam-info-row">
           <div class="fam-name-row">${escapeHtml(displayName)}</div>
           <div class="fam-handle-row">${escapeHtml(m.handle)}</div>
@@ -1023,8 +960,8 @@ function renderPlatform(platform) {
           </div>
         </div>
         <div class="fam-right">
-          <a class="fam-follow-btn ${platform}" href="${escapeHtml(profileUrl)}" target="_blank" rel="noopener" title="Follow">
-            <i class="fas fa-plus"></i> Follow
+          <a class="fam-follow-btn ${platform}" href="${escapeHtml(profileUrl)}" target="_blank" rel="noopener" title="${actionText}">
+            <i class="fas ${actionIcon}"></i> ${actionText}
           </a>
           <a class="fam-visit-btn" href="${escapeHtml(profileUrl)}" target="_blank" rel="noopener" title="Visit Profile">
             <i class="fas fa-external-link-alt"></i> Visit
@@ -1075,7 +1012,7 @@ function initAddForm() {
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
 
-    // Timeout setup: Agar 5 second me save nahi hua, toh reset kardo
+    // Timeout setup
     const timeoutId = setTimeout(() => {
       btn.disabled = false;
       btn.innerHTML = '<i class="fas fa-plus"></i> Add Member';
@@ -1094,7 +1031,7 @@ function initAddForm() {
         createdAt: Date.now()
       });
 
-      clearTimeout(timeoutId); // Agar save ho gaya, toh timer hata do
+      clearTimeout(timeoutId); 
       showToast(`${name} added!`);
       document.getElementById('addForm').reset();
       document.querySelectorAll('#platformSelect .platform-option').forEach(o => o.classList.remove('selected'));
