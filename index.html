@@ -530,7 +530,7 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
     <div class="family-tabs" id="familyTabs">
       <button class="fam-tab active" data-tab="instagram"><i class="fab fa-instagram"></i> Instagram Family</button>
       <button class="fam-tab" data-tab="youtube"><i class="fab fa-youtube"></i> YouTube Family</button>
-      <button class="fam-tab" data-tab="facebook"><i class="fab fa-facebook"></i> Facebook Family</button>
+      <button class="fam-tab" data-tab="facebook"><i class="fab fa-facebook"></i> Twitter Family</button>
     </div>
 
     <div class="family-panel active" id="panel-instagram">
@@ -557,7 +557,7 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
 
     <div class="family-panel" id="panel-facebook">
       <div class="panel-head">
-        <h3><i class="fab fa-facebook" style="color:var(--fb)"></i> Facebook Family <span class="count-badge" id="count-facebook">0 Members</span></h3>
+        <h3><i class="fab fa-facebook" style="color:var(--fb)"></i> Twitter Family <span class="count-badge" id="count-facebook">0 Members</span></h3>
         <div class="search-wrap"><i class="fas fa-search"></i><input type="text" class="search-input" id="search-facebook" placeholder="Search by name or number..."></div>
       </div>
       <div class="family-grid" id="list-facebook"></div>
@@ -626,7 +626,7 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
           <a href="https://www.youtube.com/@surajprocreater1" class="yt" title="YouTube"><i class="fab fa-youtube"></i></a>
           <a href="https://www.instagram.com/surajprocreater" class="ig" title="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com/share/1Aj2aesAw8/" class="fb" title="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://t.me/boost/onlinebestdealshop" class="tg" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://t.me/boost/surajprocreater1" class="tg" title="Telegram"><i class="fab fa-telegram"></i></a>
           <a href="https://x.com/surajprocreater" class="tw" title="Twitter / X"><i class="fab fa-twitter"></i></a>
           <a href="https://www.linkedin.com/in/toon-mir-b11b6a370" class="li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://www.snapchat.com/add/surajprocreater" class="sc" title="Snapchat"><i class="fab fa-snapchat"></i></a>
@@ -652,7 +652,7 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
         <div class="platform-select" id="platformSelect">
           <div class="platform-option selected" data-p="instagram"><i class="fab fa-instagram"></i> Instagram</div>
           <div class="platform-option" data-p="youtube"><i class="fab fa-youtube"></i> YouTube</div>
-          <div class="platform-option" data-p="facebook"><i class="fab fa-facebook"></i> Facebook</div>
+          <div class="platform-option" data-p="facebook"><i class="fab fa-facebook"></i> Twitter</div>
         </div>
       </div>
       <div class="form-group">
@@ -679,7 +679,7 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
       <div class="platform-select" id="bulkPlatformSelect">
         <div class="platform-option selected" data-p="instagram"><i class="fab fa-instagram"></i> Instagram</div>
         <div class="platform-option" data-p="youtube"><i class="fab fa-youtube"></i> YouTube</div>
-        <div class="platform-option" data-p="facebook"><i class="fab fa-facebook"></i> Facebook</div>
+        <div class="platform-option" data-p="facebook"><i class="fab fa-facebook"></i> Twitter</div>
       </div>
     </div>
     <div class="form-group">
@@ -768,7 +768,7 @@ function getProfileUrl(m){
   const c = h.replace(/^@/, '');
   if (m.platform === 'instagram') return `https://instagram.com/${c}`;
   if (m.platform === 'youtube') return `https://youtube.com/@${c}`;
-  if (m.platform === 'facebook') return `https://facebook.com/${c}`;
+  if (m.platform === 'Twitter') return `https://Twitter.com/${c}`;
   return '#';
 }
 
@@ -943,9 +943,9 @@ function renderPlatform(platform) {
       actionText = 'Subscribe';
       actionIcon = 'fa-bell';
     }
-    if (platform === 'facebook') {
-      platformIcon = 'fa-facebook';
-    }
+    let platformIcon = 'fa-twitter';
+    let actionText = 'Follow';
+    let actionIcon = 'fa-plus';
 
     return `
       <div class="fam-card-row ${platform}">
