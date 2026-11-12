@@ -943,9 +943,10 @@ function renderPlatform(platform) {
       actionText = 'Subscribe';
       actionIcon = 'fa-bell';
     }
-    let platformIcon = 'fa-twitter';
-    let actionText = 'Follow';
-    let actionIcon = 'fa-plus';
+    let platformIcon = 'fa-twitter';{
+        actionText = 'Follow';
+    }
+    
 
     return `
       <div class="fam-card-row ${platform}">
