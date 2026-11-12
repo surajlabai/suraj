@@ -655,11 +655,19 @@ footer{background:linear-gradient(to bottom,#1a1a2e,#0d0d18);padding:5rem 0 0;
           <div class="platform-option" data-p="facebook"><i class="fab fa-facebook"></i> Facebook</div>
         </div>
       </div>
+      
+      <!-- Naya Name Field -->
       <div class="form-group">
-        <label>Username / Handle *</label>
-        <input type="text" id="addHandle" class="form-control" placeholder="e.g. @rahul_k" required>
+        <label>Full Name *</label>
+        <input type="text" id="addName" class="form-control" placeholder="e.g. Amit Kumar" required>
+      </div>
+
+      <!-- Handle / Link Field -->
+      <div class="form-group">
+        <label>Username / Profile Link *</label>
+        <input type="text" id="addHandle" class="form-control" placeholder="@username ya Pura Link" required>
         <p style="font-size:.72rem;color:var(--gray);margin-top:.35rem">
-          <i class="fas fa-info-circle"></i> Sirf handle daalo — naam auto ban jayega
+          <i class="fas fa-info-circle"></i> Facebook ke liye yahan pura profile link paste karein (https://...)
         </p>
       </div>
       <button type="submit" class="btn btn-primary" style="width:100%" id="submitAddBtn"><i class="fas fa-plus"></i> Add Member</button>
@@ -726,7 +734,7 @@ import {
    ⚠️ PASTE YOUR FIREBASE CONFIG HERE
    ========================================================= */
 const firebaseConfig = {
- apiKey: "AIzaSyCuBQeYqv41NY_C6PeNTa5zSW9RDWgabh8",
+  apiKey: "AIzaSyCuBQeYqv41NY_C6PeNTa5zSW9RDWgabh8",
   authDomain: "surajaiwebsite.firebaseapp.com",
   databaseURL: "https://surajaiwebsite-default-rtdb.firebaseio.com",
   projectId: "surajaiwebsite",
@@ -764,6 +772,7 @@ function handleToName(handle) {
 
 function getProfileUrl(m){
   const h = (m.handle || '').trim();
+  // Agar user ne pura link paste kiya hai toh sidha wahi link use hoga
   if (h.startsWith('http://') || h.startsWith('https://')) return h;
   const c = h.replace(/^@/, '');
   if (m.platform === 'instagram') return `https://instagram.com/${c}`;
@@ -928,6 +937,7 @@ function renderPlatform(platform) {
   }
 
   listEl.innerHTML = visible.map(m => {
+    // Agar manually name enter nahi kiya toh handle se banayega (purane data ke liye)
     const displayName = m.name || handleToName(m.handle);
     const profileUrl = getProfileUrl(m);
     const delBtn = currentUser
@@ -996,17 +1006,17 @@ async function renumberPlatform(platform) {
 }
 
 /* =========================================================
-   🚀 FIXED ADD FORM (With 5 sec timeout so it never hangs)
+   🚀 UPDATED ADD FORM WITH MANUAL NAME & FULL URL SUPPORT
    ========================================================= */
 function initAddForm() {
   document.getElementById('addForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+    const name = document.getElementById('addName').value.trim();
     const handle = document.getElementById('addHandle').value.trim();
 
-    if (!handle) { showToast('Handle required', 'error'); return; }
+    if (!name || !handle) { showToast('Name and Handle required', 'error'); return; }
     if (!currentUser) { showToast('Please unlock admin first', 'error'); openModal('loginModal'); return; }
 
-    const name = handleToName(handle);
     const btn = document.getElementById('submitAddBtn');
     
     btn.disabled = true;
@@ -1016,7 +1026,7 @@ function initAddForm() {
     const timeoutId = setTimeout(() => {
       btn.disabled = false;
       btn.innerHTML = '<i class="fas fa-plus"></i> Add Member';
-      showToast('Error: Server not responding. Check your Firebase Config!', 'error');
+      showToast('Error: Server not responding. Check Firebase Config!', 'error');
     }, 5000);
 
     try {
@@ -1025,8 +1035,8 @@ function initAddForm() {
 
       await addDoc(familyCol, {
         platform: selectedPlatform,
-        name: name,
-        handle: handle,
+        name: name,          // Manual input naam jayega idhar
+        handle: handle,      // Handle ya Pura Link jayega idhar
         order: nextOrder,
         createdAt: Date.now()
       });
@@ -1034,6 +1044,8 @@ function initAddForm() {
       clearTimeout(timeoutId); 
       showToast(`${name} added!`);
       document.getElementById('addForm').reset();
+      
+      // Reset selected platform back to Instagram
       document.querySelectorAll('#platformSelect .platform-option').forEach(o => o.classList.remove('selected'));
       document.querySelector('#platformSelect .platform-option[data-p="instagram"]').classList.add('selected');
       selectedPlatform = 'instagram';
